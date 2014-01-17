@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CPDAcknowledgementsViewController : UIViewController
+@interface CPDAcknowledgementsViewController : UITableViewController
 
 - (id)initWithStyle:(id)style;
 - (id)initWithStyle:(id)style acknowledgements:(NSArray *)acknowledgements;

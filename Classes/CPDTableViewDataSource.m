@@ -20,7 +20,7 @@
     self = [super init];
     if (!self) return nil;
 
-    _acknowledgements = acknowledgements;
+    _acknowledgements = [acknowledgements copy];
 
     return self;
 }
@@ -47,7 +47,7 @@
 }
 
 - (CPDAcknowledgement *)acknowledgementAtIndexPath:(NSIndexPath *)indexPath {
-    CPDAcknowledgement *item = _acknowledgements[indexPath.row];
+    CPDAcknowledgement *item = self.acknowledgements[indexPath.row];
     return item;
 }
 

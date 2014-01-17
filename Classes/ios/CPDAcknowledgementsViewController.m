@@ -6,10 +6,11 @@
 //
 //
 
-#import "CPDAcknowledgementsViewController.h"
-#import "CPDAcknowledgementsLoader.h"
-#import "CPDTableViewDataSource.h"
 #import "CPDAcknowledgement.h"
+#import "CPDTableViewDataSource.h"
+#import "CPDAcknowledgementsLoader.h"
+#import "CPDAcknowledgementsViewController.h"
+#import "CPDAcknowledgementDetailViewController.h"
 
 @interface CPDAcknowledgementsViewController () <UITableViewDelegate>
 @property (nonatomic, strong) CPDTableViewDataSource *dataSource;
@@ -33,7 +34,7 @@
 
 - (id)initWithStyle:(id)style acknowledgements:(NSArray *)acknowledgements;
 {
-    self = [super init];
+    self = [super initWithStyle:UITableViewStylePlain];
     if (!self) return nil;
 
     _dataSource = [[CPDTableViewDataSource alloc] initWithAcknowledgements:acknowledgements];
@@ -43,11 +44,9 @@
 
 - (void)loadView
 {
-    UITableView *tableView = [[UITableView alloc] init];
-    self.view = tableView;
+    [super loadView];
 
-    tableView.delegate = self;
-    tableView.dataSource = self.dataSource;
+    self.tableView.dataSource = self.dataSource;
 }
 
 #pragma mark UITableViewDelegate methods
@@ -55,7 +54,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 {
     CPDAcknowledgement *acknowledgement = [self.dataSource acknowledgementAtIndexPath:indexPath];
-    NSLog(@"%@", acknowledgement);
+    CPDAcknowledgementDetailViewController *detailVC = [[CPDAcknowledgementDetailViewController alloc] initWithAcknowledgement:acknowledgement];
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 @end

@@ -13,8 +13,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] init];
-    self.window.rootViewController = [[CPDAcknowledgementsViewController alloc] init];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+
+    CPDAcknowledgementsViewController *acknowledgementsViewController = [[CPDAcknowledgementsViewController alloc] init];
+
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:acknowledgementsViewController];
+
+    self.window.rootViewController = navController;
     [self.window makeKeyAndVisible];
 
     return YES;
