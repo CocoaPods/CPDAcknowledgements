@@ -1,0 +1,73 @@
+//
+//  CPDLibraryDetailViewController
+//  Pods
+//
+//  Created by Orta on 17/01/2014.
+//
+//
+
+#import "CPDLibraryDetailViewController.h"
+#import "CPDLibrary.h"
+
+@interface CPDLibraryDetailViewController () <UIWebViewDelegate>
+@property (nonatomic, strong) CPDLibrary *acknowledgement;
+@end
+
+@implementation CPDLibraryDetailViewController
+
+- (id)initWithAcknowledgement:(CPDLibrary *)acknowledgement
+{
+    self = [super init];
+    if (!self) return nil;
+
+    _acknowledgement = acknowledgement;
+    self.title = _acknowledgement.title;
+
+    return self;
+}
+
+- (void)loadView
+{
+    UIWebView *webView = [self createWebview];
+
+    NSString *html = self.html ? self.html : [self.class defaultHTMLTemplate];
+    NSString *css = self.css ? self.css : [self.class defaultCSS];
+    NSString *renderedHTML = [self.class generatedHTMLWithHTML:html CSS:css acknowledgement:self.acknowledgement];
+
+    [webView loadHTMLString:renderedHTML baseURL:nil];
+
+    self.view = webView;
+}
+
+- (UIWebView *)createWebview
+{
+    UIWebView *webView = [[UIWebView alloc] init];
+    webView.dataDetectorTypes = UIDataDetectorTypeNone;
+    webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
+    webView.backgroundColor = [UIColor whiteColor];
+    webView.opaque = NO;
+    return webView;
+}
+
++ (NSString *)generatedHTMLWithHTML:(NSString *)html CSS:(NSString *)css acknowledgement:(CPDLibrary *)acknowledgement
+{
+    NSMutableString *mutableHTML = [html mutableCopy];
+
+    [mutableHTML replaceOccurrencesOfString:@"{{STYLESHEET}}" withString:css options:0 range:NSMakeRange(0, mutableHTML.length)];
+    NSString *htmlLicense = [acknowledgement.license stringByReplacingOccurrencesOfString:@"\n\n" withString:@"</p><p>"];
+    [mutableHTML replaceOccurrencesOfString:@"{{BODY}}" withString:htmlLicense options:0 range:NSMakeRange(0, mutableHTML.length)];
+
+    return [mutableHTML copy];
+}
+
++ (NSString *)defaultHTMLTemplate
+{
+    return @"<html><head>{{STYLESHEET}}</head><body><p>{{BODY}}</p></body></html>";
+}
+
++ (NSString *)defaultCSS
+{
+    return @"<style>p{ font-family:HelveticaNeue; padding:10px }</style>";
+}
+
+@end

@@ -55,6 +55,9 @@
 		600F992618896F8C00896B83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		600F992818896F8C00896B83 /* CPDAcknowledgementsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPDAcknowledgementsTests.m; sourceTree = "<group>"; };
 		60786E1B1889929A00DB7AF2 /* Pods-Demo ProjectTests-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Pods-Demo ProjectTests-acknowledgements.plist"; path = "Pods/Pods-Demo ProjectTests-acknowledgements.plist"; sourceTree = "<group>"; };
+		60786E1D1889A0F900DB7AF2 /* TODO */ = {isa = PBXFileReference; lastKnownFileType = text; name = TODO; path = Demo/TODO; sourceTree = "<group>"; };
+		60786E201889A14800DB7AF2 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
+		60786E211889A14800DB7AF2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		60CD4D361889737500B05988 /* Pods-Demo Project-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Pods-Demo Project-acknowledgements.plist"; path = "Pods/Pods-Demo Project-acknowledgements.plist"; sourceTree = "<group>"; };
 		60CD4D401889755D00B05988 /* CPDAcknowledgementLoaderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPDAcknowledgementLoaderTests.m; sourceTree = "<group>"; };
 		60CD4D42188975EC00B05988 /* Demo ProjectTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Demo ProjectTests-Prefix.pch"; sourceTree = "<group>"; };
@@ -92,6 +95,9 @@
 		600F98F118896F8C00896B83 = {
 			isa = PBXGroup;
 			children = (
+				60786E201889A14800DB7AF2 /* CHANGELOG.md */,
+				60786E211889A14800DB7AF2 /* README.md */,
+				60786E1D1889A0F900DB7AF2 /* TODO */,
 				600F990318896F8C00896B83 /* Demo */,
 				600F992218896F8C00896B83 /* Tests */,
 				600F98FC18896F8C00896B83 /* Frameworks */,
@@ -229,7 +235,7 @@
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					600F991A18896F8C00896B83 = {
-						TestTargetID = 600F98F918896F8C00896B83;
+						TestTargetID = 600F98F918896F8C00896B83 /* Demo Project */;
 					};
 				};
 			};

@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@class CPDAcknowledgement;
+@class CPDLibrary;
 @interface CPDTableViewDataSource : NSObject <UITableViewDataSource>
 
-- (id)initWithAcknowledgements:(NSArray *)acknowledgements;
+- (id)initWithAcknowledgements:(NSArray *)acknowledgements contributions:(NSArray *)contributions;
 
-- (CPDAcknowledgement *)acknowledgementAtIndexPath:(NSIndexPath *)indexPath;
+- (CPDLibrary *)acknowledgementAtIndexPath:(NSIndexPath *)indexPath;
 
 @end

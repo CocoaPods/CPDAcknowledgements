@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CPDAcknowledgementsLoader : NSObject
+@interface CPDCocoaPodsLibrariesLoader : NSObject
 
 + (NSArray *)loadAcknowledgementsWithBundle:(NSBundle *)bundle;
 

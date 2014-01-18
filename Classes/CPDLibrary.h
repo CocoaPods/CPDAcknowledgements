@@ -6,7 +6,7 @@
 //
 //
 
-@interface CPDAcknowledgement : NSObject
+@interface CPDLibrary : NSObject
 
 - (instancetype)initWithTitle:(NSString *)title licenseBody:(NSString *)body;
 

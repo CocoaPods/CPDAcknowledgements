@@ -6,15 +6,14 @@
 //
 //
 
-#import "CPDAcknowledgement.h"
+#import "CPDLibrary.h"
 #import "CPDTableViewDataSource.h"
-#import "CPDAcknowledgementsLoader.h"
+#import "CPDCocoaPodsLibrariesLoader.h"
 #import "CPDAcknowledgementsViewController.h"
-#import "CPDAcknowledgementDetailViewController.h"
+#import "CPDLibraryDetailViewController.h"
 
 @interface CPDAcknowledgementsViewController () <UITableViewDelegate>
 @property (nonatomic, strong) CPDTableViewDataSource *dataSource;
-
 @end
 
 @implementation CPDAcknowledgementsViewController
@@ -28,16 +27,17 @@
 - (id)initWithStyle:(id)style
 {
     NSBundle *bundle = [NSBundle mainBundle];
-    NSArray *defaultAcknowledgements = [CPDAcknowledgementsLoader loadAcknowledgementsWithBundle:bundle];
-    return [self initWithStyle:style acknowledgements:defaultAcknowledgements];
+    NSArray *defaultAcknowledgements = [CPDCocoaPodsLibrariesLoader loadAcknowledgementsWithBundle:bundle];
+    return [self initWithStyle:style acknowledgements:defaultAcknowledgements contributions:nil];
 }
 
-- (id)initWithStyle:(id)style acknowledgements:(NSArray *)acknowledgements;
+- (id)initWithStyle:(id)style acknowledgements:(NSArray *)acknowledgements contributions:(NSArray *)contributions
 {
     self = [super initWithStyle:UITableViewStylePlain];
     if (!self) return nil;
 
-    _dataSource = [[CPDTableViewDataSource alloc] initWithAcknowledgements:acknowledgements];
+    _dataSource = [[CPDTableViewDataSource alloc] initWithAcknowledgements:acknowledgements contributions:contributions];
+    self.title = @"Acknowledgements";
 
     return self;
 }
@@ -53,8 +53,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    CPDAcknowledgement *acknowledgement = [self.dataSource acknowledgementAtIndexPath:indexPath];
-    CPDAcknowledgementDetailViewController *detailVC = [[CPDAcknowledgementDetailViewController alloc] initWithAcknowledgement:acknowledgement];
+    CPDLibrary *acknowledgement = [self.dataSource acknowledgementAtIndexPath:indexPath];
+    CPDLibraryDetailViewController *detailVC = [[CPDLibraryDetailViewController alloc] initWithAcknowledgement:acknowledgement];
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 

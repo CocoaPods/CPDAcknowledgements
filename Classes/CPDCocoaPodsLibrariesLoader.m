@@ -6,10 +6,10 @@
 //
 //
 
-#import "CPDAcknowledgementsLoader.h"
-#import "CPDAcknowledgement.h"
+#import "CPDCocoaPodsLibrariesLoader.h"
+#import "CPDLibrary.h"
 
-@implementation CPDAcknowledgementsLoader
+@implementation CPDCocoaPodsLibrariesLoader
 
 + (NSArray *)loadAcknowledgementsWithBundle:(NSBundle *)bundle;
 {
@@ -28,7 +28,7 @@
         NSString *title = entry[@"Title"];
         NSString *body = entry[@"FooterText"];
 
-        CPDAcknowledgement *acknowledgement = [[CPDAcknowledgement alloc] initWithTitle:title licenseBody:body];
+        CPDLibrary *acknowledgement = [[CPDLibrary alloc] initWithTitle:title licenseBody:body];
         [acknowledgements addObject:acknowledgement];
     }
     return acknowledgements;

@@ -10,6 +10,6 @@ end
 
 target "Demo ProjectTests" do
 	pod 'Specta',      '~> 0.2'
-    pod 'Expecta',     '~> 0.2'
-  	pod 'OCMockito', '~> 1.0'
+  pod 'Expecta',     '~> 0.2'
+  pod 'OCMockito',   '~> 1.0'
 end

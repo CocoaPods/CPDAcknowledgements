@@ -11,6 +11,6 @@
 @interface CPDAcknowledgementsViewController : UITableViewController
 
 - (id)initWithStyle:(id)style;
-- (id)initWithStyle:(id)style acknowledgements:(NSArray *)acknowledgements;
+- (id)initWithStyle:(id)style acknowledgements:(NSArray *)acknowledgements contributions:(NSArray *)contributions;
 
 @end

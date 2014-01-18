@@ -6,9 +6,9 @@
 //
 //
 
-#import "CPDAcknowledgement.h"
+#import "CPDLibrary.h"
 
-@implementation CPDAcknowledgement
+@implementation CPDLibrary
 
 - (instancetype)initWithTitle:(NSString *)title licenseBody:(NSString *)body
 {
