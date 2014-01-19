@@ -9,9 +9,11 @@ To run the example project; clone the repo, and run `pod install` from the Proje
 
 ## Requirements
 
+Not ready for public prime-time yet. Requires CocoaPods 0.30.
+
 ## Installation
 
-CPDAcknowledgements is available through [CocoaPods](http://cocoapods.org), to install
+CPDAcknowledgements will be available through [CocoaPods](http://cocoapods.org), to install
 it simply add the following line to your Podfile:
 
     pod "CPDAcknowledgements"
@@ -19,8 +21,12 @@ it simply add the following line to your Podfile:
 ## Author
 
 Orta Therox, orta.therox@gmail.com
+Fabio Pelosin, fabio.pelosin@gmail.com
+
+### Acknowledgements
+
+Inspiration taken from [@orta/life#12](https://github.com/orta/life/issues/12) and [VTAcknowledgementsViewController](https://github.com/vtourraine/VTAcknowledgementsViewController).
 
 ## License
 
 CPDAcknowledgements is available under the MIT license. See the LICENSE file for more info.
-

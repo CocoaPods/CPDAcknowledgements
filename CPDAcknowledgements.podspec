@@ -12,8 +12,8 @@ Pod::Spec.new do |s|
   s.author       = { "Orta Therox" => "orta.therox@gmail.com", "Fabio Pelosin" => "fabiopelosin@gmail.com" }
   s.source       = { :git => "https://github.com/CocoaPods/CPDAcknowledgements.git", :tag => s.version.to_s }
   s.social_media_url = "https://twitter.com/CocoaPods"
-  s.platform     = :ios, '5.0'
-  s.ios.deployment_target = '5.0'
+  s.platform     = :ios, '6.0'
+  s.ios.deployment_target = '6.0'
   s.requires_arc = true
   s.source_files = 'Classes'
   s.ios.source_files = 'Classes/ios'
