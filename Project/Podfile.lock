@@ -34,7 +34,7 @@ EXTERNAL SOURCES:
     :path: ../CPDAcknowledgements.podspec
 
 SPEC CHECKSUMS:
-  CPDAcknowledgements: d6fe95c5d4c32d0115559d1cb134608aac53ebff
+  CPDAcknowledgements: 5787c07569cd9cb08a0b399fb1cf3e6a61f2519e
   Expecta: dbc4a27fabb853bdd2e907e33f11ee43a9a47d0c
   FLKAutoLayout: fc04b932009174d4118ef4bda9dc8fedf1369efc
   IRFEmojiCheatSheet: 88536eccaa3d994a8300063ea4b9cfc245561df5
