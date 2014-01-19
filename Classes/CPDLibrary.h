@@ -8,13 +8,15 @@
 
 @interface CPDLibrary : NSObject
 
-- (instancetype)initWithTitle:(NSString *)title licenseBody:(NSString *)body;
+- (id)initWithCocoaPodsMetadataPlistDictionary:(NSDictionary *)dictionary;
 
-@property (nonatomic, copy, readonly) NSString *title;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *licenseBody;
+@property (nonatomic, copy) NSString *licenseType;
 
-// TODO: Add this in CocoaPods
-// @property (nonatomic, copy) NSArray *authors;
-
-@property (nonatomic, copy, readonly) NSString *license;
+@property (nonatomic, copy) NSArray  *authors;
+@property (nonatomic, copy) NSString *socialMediaURL;
+@property (nonatomic, copy) NSString *description;
+@property (nonatomic, copy) NSString *version;
 
 @end

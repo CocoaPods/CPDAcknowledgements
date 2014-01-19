@@ -23,7 +23,7 @@ describe(@"loadAcknowledgements with our fixtured data", ^{
         CPDLibrary *acknowledgement = values[0];
 
         expect(acknowledgement.title).to.equal(@"CPDAcknowledgements");
-        expect([acknowledgement.license hasPrefix:@"Copyright"]).to.beTruthy();
+        expect([acknowledgement.licenseBody hasPrefix:@"Copyright"]).to.beTruthy();
     });
 });
 

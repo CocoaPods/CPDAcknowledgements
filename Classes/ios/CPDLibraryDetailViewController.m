@@ -57,7 +57,7 @@
     NSMutableString *mutableHTML = [html mutableCopy];
 
     [mutableHTML replaceOccurrencesOfString:@"{{STYLESHEET}}" withString:css options:0 range:NSMakeRange(0, mutableHTML.length)];
-    NSString *htmlLicense = [acknowledgement.license stringByReplacingOccurrencesOfString:@"\n\n" withString:@"</p><p>"];
+    NSString *htmlLicense = [acknowledgement.licenseBody stringByReplacingOccurrencesOfString:@"\n\n" withString:@"</p><p>"];
     [mutableHTML replaceOccurrencesOfString:@"{{BODY}}" withString:htmlLicense options:0 range:NSMakeRange(0, mutableHTML.length)];
 
     return [mutableHTML copy];

@@ -13,7 +13,7 @@
 
 + (NSArray *)loadAcknowledgementsWithBundle:(NSBundle *)bundle;
 {
-    NSString *path = [self pathForFirstFileWithSuffix:@"-acknowledgements.plist" inBundle:bundle];
+    NSString *path = [self pathForFirstFileWithSuffix:@"-metadata.plist" inBundle:bundle];
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:path];
     return [self acknowledgementsFromDictionary:dictionary];
 }
@@ -21,14 +21,10 @@
 + (NSArray *)acknowledgementsFromDictionary:(NSDictionary *)dictionary
 {
     NSMutableArray *acknowledgements = [NSMutableArray array];
-    NSArray *entries = dictionary[@"PreferenceSpecifiers"];
-    NSArray *validEntires = [entries subarrayWithRange:NSMakeRange(1, entries.count - 2)];
+    NSArray *entries = dictionary[@"specs"];
 
-    for (NSDictionary *entry in validEntires) {
-        NSString *title = entry[@"Title"];
-        NSString *body = entry[@"FooterText"];
-
-        CPDLibrary *acknowledgement = [[CPDLibrary alloc] initWithTitle:title licenseBody:body];
+    for (NSDictionary *entry in entries) {
+        CPDLibrary *acknowledgement = [[CPDLibrary alloc] initWithCocoaPodsMetadataPlistDictionary:entry];
         [acknowledgements addObject:acknowledgement];
     }
     return acknowledgements;
