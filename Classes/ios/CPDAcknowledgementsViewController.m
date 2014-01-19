@@ -25,8 +25,7 @@
 
 - (id)init
 {
-    id defaultStyle = [[NSObject alloc] init];
-    return [self initWithStyle:defaultStyle];
+    return [self initWithStyle:nil];
 }
 
 - (id)initWithStyle:(CPDStyle *)style
