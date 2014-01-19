@@ -11,9 +11,14 @@
 #import "CPDCocoaPodsLibrariesLoader.h"
 #import "CPDAcknowledgementsViewController.h"
 #import "CPDLibraryDetailViewController.h"
+#import "CPDContribution.h"
+#import "CPDContributionDetailViewController.h"
+#import "CPDStyle.h"
 
 @interface CPDAcknowledgementsViewController () <UITableViewDelegate>
 @property (nonatomic, strong) CPDTableViewDataSource *dataSource;
+@property (nonatomic, strong) CPDStyle *style;
+
 @end
 
 @implementation CPDAcknowledgementsViewController
@@ -24,19 +29,24 @@
     return [self initWithStyle:defaultStyle];
 }
 
-- (id)initWithStyle:(id)style
+- (id)initWithStyle:(CPDStyle *)style
 {
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSArray *defaultAcknowledgements = [CPDCocoaPodsLibrariesLoader loadAcknowledgementsWithBundle:bundle];
-    return [self initWithStyle:style acknowledgements:defaultAcknowledgements contributions:nil];
+    return [self initWithStyle:style acknowledgements:nil contributions:nil];
 }
 
-- (id)initWithStyle:(id)style acknowledgements:(NSArray *)acknowledgements contributions:(NSArray *)contributions
+- (id)initWithStyle:(CPDStyle *)style acknowledgements:(NSArray *)acknowledgements contributions:(NSArray *)contributions
 {
-    self = [super initWithStyle:UITableViewStylePlain];
+    self = [super initWithStyle:UITableViewStyleGrouped];
     if (!self) return nil;
 
+    if(!acknowledgements){
+        NSBundle *bundle = [NSBundle mainBundle];
+        acknowledgements = [CPDCocoaPodsLibrariesLoader loadAcknowledgementsWithBundle:bundle];
+    }
+
     _dataSource = [[CPDTableViewDataSource alloc] initWithAcknowledgements:acknowledgements contributions:contributions];
+    _style = style;
+
     self.title = @"Acknowledgements";
 
     return self;
@@ -47,15 +57,42 @@
     [super loadView];
 
     self.tableView.dataSource = self.dataSource;
+    self.tableView.separatorInset = UIEdgeInsetsZero;
 }
 
 #pragma mark UITableViewDelegate methods
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    CPDLibrary *acknowledgement = [self.dataSource acknowledgementAtIndexPath:indexPath];
-    CPDLibraryDetailViewController *detailVC = [[CPDLibraryDetailViewController alloc] initWithAcknowledgement:acknowledgement];
-    [self.navigationController pushViewController:detailVC animated:YES];
+    id acknowledgement = [self.dataSource acknowledgementAtIndexPath:indexPath];
+
+    id detailController;
+    if([acknowledgement isKindOfClass:CPDLibrary.class]){
+        detailController = [[CPDLibraryDetailViewController alloc] initWithLibrary:acknowledgement];
+        [detailController setCSS:self.style.libraryCSS];
+        [detailController setHTML:self.style.libraryHTML];
+
+    } else if([acknowledgement isKindOfClass:CPDContribution.class]){
+        detailController = [[CPDContributionDetailViewController alloc] initWithContribution:acknowledgement];
+    }
+
+    [self.navigationController pushViewController:detailController animated:YES];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [self.dataSource heightForCellAtIndexPath:indexPath];
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.frame), 44)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 14, CGRectGetWidth(tableView.frame), 24)];
+
+    label.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    label.text = @"2013";
+
+    [view addSubview: label];
+    return view;
 }
 
 @end

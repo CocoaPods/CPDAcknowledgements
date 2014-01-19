@@ -13,7 +13,9 @@
 - (id)initWithName:(NSString *)name url:(NSString *)url role:(NSString *)role;
 
 @property (nonatomic, copy, readonly) NSString *name;
-@property (nonatomic, copy, readonly) NSString *url;
+@property (nonatomic, copy, readonly) NSString *URL;
 @property (nonatomic, copy, readonly) NSString *role;
+
+@property (nonatomic, copy) NSString *avatarAddress;
 
 @end

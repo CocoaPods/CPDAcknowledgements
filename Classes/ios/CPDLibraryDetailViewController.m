@@ -15,12 +15,12 @@
 
 @implementation CPDLibraryDetailViewController
 
-- (id)initWithAcknowledgement:(CPDLibrary *)acknowledgement
+- (id)initWithLibrary:(CPDLibrary *)library
 {
     self = [super init];
     if (!self) return nil;
 
-    _acknowledgement = acknowledgement;
+    _acknowledgement = library;
     self.title = _acknowledgement.title;
 
     return self;
@@ -30,8 +30,8 @@
 {
     UIWebView *webView = [self createWebview];
 
-    NSString *html = self.html ? self.html : [self.class defaultHTMLTemplate];
-    NSString *css = self.css ? self.css : [self.class defaultCSS];
+    NSString *html = self.HTML ? self.HTML : [self.class defaultHTMLTemplate];
+    NSString *css = self.CSS ? self.CSS : [self.class defaultCSS];
     NSString *renderedHTML = [self.class generatedHTMLWithHTML:html CSS:css acknowledgement:self.acknowledgement];
 
     [webView loadHTMLString:renderedHTML baseURL:nil];
@@ -43,9 +43,12 @@
 {
     UIWebView *webView = [[UIWebView alloc] init];
     webView.dataDetectorTypes = UIDataDetectorTypeNone;
-    webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
     webView.backgroundColor = [UIColor whiteColor];
     webView.opaque = NO;
+
+    if([webView respondsToSelector:@selector(scrollView)])
+        webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
+
     return webView;
 }
 
@@ -67,7 +70,7 @@
 
 + (NSString *)defaultCSS
 {
-    return @"<style>p{ font-family:HelveticaNeue; padding:10px }</style>";
+    return @"<style> p{ font-family:HelveticaNeue; font-size: 14px; padding:12px; -webkit-user-select:none; }</style>";
 }
 
 @end

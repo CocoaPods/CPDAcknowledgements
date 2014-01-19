@@ -11,9 +11,9 @@
 @class CPDLibrary;
 @interface CPDLibraryDetailViewController : UIViewController
 
-- (id)initWithAcknowledgement:(CPDLibrary *)acknowledgement;
+- (id)initWithLibrary:(CPDLibrary *)library;
 
-@property (nonatomic, copy) NSString *html;
-@property (nonatomic, copy) NSString *css;
+@property (nonatomic, copy) NSString *HTML;
+@property (nonatomic, copy) NSString *CSS;
 
 @end

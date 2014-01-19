@@ -16,7 +16,7 @@
     if(!self) return self;
 
     _name = name;
-    _url = url;
+    _URL = url;
     _role = role;
 
     return self;

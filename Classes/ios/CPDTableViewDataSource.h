@@ -16,4 +16,6 @@
 
 - (CPDLibrary *)acknowledgementAtIndexPath:(NSIndexPath *)indexPath;
 
+- (CGFloat)heightForCellAtIndexPath:(NSIndexPath *)path;
+
 @end
