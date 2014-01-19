@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "CPDAcknowledgements"
   s.version      = "0.0.1"
-  s.summary      = "Show your CocoaPods dependencies."
+  s.summary      = "Show your CocoaPods dependencies in-app."
   s.description  = <<-DESC
                     A Customisable view controller 
 

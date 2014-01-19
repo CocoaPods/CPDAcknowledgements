@@ -57,7 +57,6 @@
     [super loadView];
 
     self.tableView.dataSource = self.dataSource;
-    self.tableView.separatorInset = UIEdgeInsetsZero;
 }
 
 #pragma mark UITableViewDelegate methods
@@ -81,18 +80,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [self.dataSource heightForCellAtIndexPath:indexPath];
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(tableView.frame), 44)];
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 14, CGRectGetWidth(tableView.frame), 24)];
-
-    label.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
-    label.text = @"2013";
-
-    [view addSubview: label];
-    return view;
 }
 
 @end

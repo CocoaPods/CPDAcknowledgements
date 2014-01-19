@@ -77,6 +77,7 @@ static const NSString *CPDEntries = @"CPDEntries";
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.separatorInset = UIEdgeInsetsZero;
     }
 
     if ([item isKindOfClass:CPDLibrary.class]){
