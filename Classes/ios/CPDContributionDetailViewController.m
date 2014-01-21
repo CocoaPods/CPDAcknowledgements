@@ -17,7 +17,7 @@
 - (id)initWithContribution:(CPDContribution *)contribution
 {
     self = [super init];
-    if(!self) return nil;
+    if (!self) return nil;
 
     _contribution = contribution;
 
@@ -36,9 +36,13 @@
     NSURL *url = [NSURL URLWithString:self.contribution.URL];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [webView loadRequest:request];
+
+	UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+	[indicator startAnimating];
+	self.navigationItem.titleView = indicator;
 }
 
-- (BOOL)webView:(UIWebView *)aWebView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     if (navigationType == UIWebViewNavigationTypeLinkClicked) {
         NSString *title = NSLocalizedString(@"Open in Safari", @"Open in Safari popover title");
@@ -53,6 +57,11 @@
     }
 
     return YES;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+	self.navigationItem.titleView = nil;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

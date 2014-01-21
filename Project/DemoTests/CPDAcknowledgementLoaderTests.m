@@ -18,12 +18,12 @@ describe(@"loadAcknowledgements with our fixtured data", ^{
         expect([values isKindOfClass:NSArray.class]).to.beTruthy();
     });
 
-    it(@"it creates CPDAcknowledgements first", ^{
+    it(@"it creates CPDAcknowledgements with real data", ^{
         NSArray *values = [CPDCocoaPodsLibrariesLoader loadAcknowledgementsWithBundle:[NSBundle mainBundle]];
         CPDLibrary *acknowledgement = values[0];
 
         expect(acknowledgement.title).to.equal(@"CPDAcknowledgements");
-        expect([acknowledgement.licenseBody hasPrefix:@"Copyright"]).to.beTruthy();
+        expect(acknowledgement.licenseType).to.equal(@"MIT");
     });
 });
 

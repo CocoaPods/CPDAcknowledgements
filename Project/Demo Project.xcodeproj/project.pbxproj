@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		342F9EBDA81A787D5ED68844 /* CPDLibraryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 342F94FCBD3B4E6AED697FE4 /* CPDLibraryTests.m */; };
 		600F98FE18896F8C00896B83 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 600F98FD18896F8C00896B83 /* Foundation.framework */; };
 		600F990018896F8C00896B83 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 600F98FF18896F8C00896B83 /* CoreGraphics.framework */; };
 		600F990218896F8C00896B83 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 600F990118896F8C00896B83 /* UIKit.framework */; };
@@ -18,7 +19,6 @@
 		600F991E18896F8C00896B83 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 600F98FD18896F8C00896B83 /* Foundation.framework */; };
 		600F991F18896F8C00896B83 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 600F990118896F8C00896B83 /* UIKit.framework */; };
 		600F992718896F8C00896B83 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 600F992518896F8C00896B83 /* InfoPlist.strings */; };
-		600F992918896F8C00896B83 /* CPDAcknowledgementsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 600F992818896F8C00896B83 /* CPDAcknowledgementsTests.m */; };
 		60786E1C1889929A00DB7AF2 /* Pods-Demo ProjectTests-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60786E1B1889929A00DB7AF2 /* Pods-Demo ProjectTests-acknowledgements.plist */; };
 		60CD4D371889737500B05988 /* Pods-Demo Project-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60CD4D361889737500B05988 /* Pods-Demo Project-acknowledgements.plist */; };
 		60CD4D411889755D00B05988 /* CPDAcknowledgementLoaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 60CD4D401889755D00B05988 /* CPDAcknowledgementLoaderTests.m */; };
@@ -40,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		1891B092BA7F47F5AF73E4FA /* Pods-Demo ProjectTests-metadata.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "Pods-Demo ProjectTests-metadata.plist"; path = "Pods/Pods-Demo ProjectTests-metadata.plist"; sourceTree = "<group>"; };
+		342F94FCBD3B4E6AED697FE4 /* CPDLibraryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CPDLibraryTests.m; sourceTree = "<group>"; };
 		384C4E633C5C4A70A26D580A /* libPods-Demo Project.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Demo Project.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		600F98FA18896F8C00896B83 /* Demo Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Demo Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		600F98FD18896F8C00896B83 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -56,7 +57,6 @@
 		600F991C18896F8C00896B83 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		600F992418896F8C00896B83 /* Demo ProjectTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Demo ProjectTests-Info.plist"; sourceTree = "<group>"; };
 		600F992618896F8C00896B83 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		600F992818896F8C00896B83 /* CPDAcknowledgementsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CPDAcknowledgementsTests.m; sourceTree = "<group>"; };
 		60786E1B1889929A00DB7AF2 /* Pods-Demo ProjectTests-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Pods-Demo ProjectTests-acknowledgements.plist"; path = "Pods/Pods-Demo ProjectTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		60786E1D1889A0F900DB7AF2 /* TODO */ = {isa = PBXFileReference; lastKnownFileType = text; name = TODO; path = Demo/TODO; sourceTree = "<group>"; };
 		60786E201889A14800DB7AF2 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = text; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
@@ -160,9 +160,9 @@
 			isa = PBXGroup;
 			children = (
 				60CD4D42188975EC00B05988 /* Demo ProjectTests-Prefix.pch */,
-				600F992818896F8C00896B83 /* CPDAcknowledgementsTests.m */,
 				60CD4D401889755D00B05988 /* CPDAcknowledgementLoaderTests.m */,
 				600F992318896F8C00896B83 /* Supporting Files */,
+				342F94FCBD3B4E6AED697FE4 /* CPDLibraryTests.m */,
 			);
 			name = Tests;
 			path = DemoTests;
@@ -256,8 +256,6 @@
 			mainGroup = 600F98F118896F8C00896B83;
 			productRefGroup = 600F98FB18896F8C00896B83 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-			);
 			projectRoot = "";
 			targets = (
 				600F98F918896F8C00896B83 /* Demo Project */,
@@ -367,8 +365,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				600F992918896F8C00896B83 /* CPDAcknowledgementsTests.m in Sources */,
 				60CD4D411889755D00B05988 /* CPDAcknowledgementLoaderTests.m in Sources */,
+				342F9EBDA81A787D5ED68844 /* CPDLibraryTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,7 +433,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 			};
@@ -468,7 +466,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
