@@ -20,6 +20,7 @@ describe(@"loading from dictionary", ^{
                 @"CPDSocialMediaURL": @"SocialMediaURL",
                 @"CPDDescription": @"Description",
                 @"CPDVersion": @"Version",
+                @"CPDSummary" : @"Summary"
         });
 
         expect(library.title).to.equal(@"Name");
@@ -28,6 +29,8 @@ describe(@"loading from dictionary", ^{
         expect(library.socialMediaAddress).to.equal(@"SocialMediaURL");
         expect(library.libraryDescription).to.equal(@"Description");
         expect(library.version).to.equal(@"Version");
+        expect(library.summary).to.equal(@"Summary");
+
     });
 
     it(@"handles NSString author name correctly", ^{
@@ -46,7 +49,7 @@ describe(@"loading from dictionary", ^{
 
         expect(library.authors.count).to.equal(1);
         expect([library.authors[0] name]).to.equal(@"Key");
-        expect([library.authors[0] URL]).to.equal(@"mailto:Value");
+        expect([library.authors[0] websiteAddress]).to.equal(@"mailto:Value");
     });
 
     it(@"handles multiple NSDictionary authors correctly", ^{

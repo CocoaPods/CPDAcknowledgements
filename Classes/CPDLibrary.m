@@ -24,6 +24,7 @@
 
     _socialMediaAddress = [dictionary[@"CPDSocialMediaURL"] copy];
     _libraryDescription = [dictionary[@"CPDDescription"] copy];
+    _summary = [dictionary[@"CPDSummary"] copy];
     _version = [dictionary[@"CPDVersion"] copy];
 
     _authors = [self authorsWithObject:dictionary[@"CPDAuthors"]];
@@ -38,7 +39,7 @@
 
         [object enumerateKeysAndObjectsUsingBlock:^(NSString *name, NSString* email, BOOL *stop) {
             NSString *mailToLink = [NSString stringWithFormat:@"mailto:%@", email];
-            CPDContribution *contribution = [[CPDContribution alloc] initWithName:name url:mailToLink role:nil];
+            CPDContribution *contribution = [[CPDContribution alloc] initWithName:name websiteAddress:mailToLink role:nil];
             [authors addObject:contribution];
         }];
 
@@ -46,7 +47,7 @@
     }
 
     if ([object isKindOfClass:NSString.class]){
-        return @[ [[CPDContribution alloc] initWithName:object url:nil role:nil] ];
+        return @[[[CPDContribution alloc] initWithName:object websiteAddress:nil role:nil] ];
     }
 
     return nil;

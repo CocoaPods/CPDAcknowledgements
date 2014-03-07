@@ -16,6 +16,10 @@
 
 - (id)initWithContribution:(CPDContribution *)contribution
 {
+    if(!contribution.websiteAddress){
+        @throw @"The contribution needs to include a web address.";
+    }
+
     self = [super init];
     if (!self) return nil;
 
@@ -33,14 +37,21 @@
     if([webView respondsToSelector:@selector(scrollView)])
         webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
 
-    NSURL *url = [NSURL URLWithString:self.contribution.URL];
+    NSURL *url = [NSURL URLWithString:self.contribution.websiteAddress];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [webView loadRequest:request];
 
+	[self showSpinnerInNavigationBar];
+}
+
+
+- (void)showSpinnerInNavigationBar
+{
 	UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
 	[indicator startAnimating];
 	self.navigationItem.titleView = indicator;
 }
+
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
@@ -59,10 +70,12 @@
     return YES;
 }
 
+
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
 	self.navigationItem.titleView = nil;
 }
+
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -70,4 +83,6 @@
         [[UIApplication sharedApplication] openURL:self.urlForAlertView];
     }
 }
+
+
 @end

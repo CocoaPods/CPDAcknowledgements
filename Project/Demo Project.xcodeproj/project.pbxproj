@@ -241,7 +241,7 @@
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
 					600F991A18896F8C00896B83 = {
-						TestTargetID = 600F98F918896F8C00896B83 /* Demo Project */;
+						TestTargetID = 600F98F918896F8C00896B83;
 					};
 				};
 			};

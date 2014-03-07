@@ -71,7 +71,10 @@
         [detailController setHTML:self.style.libraryHTML];
 
     } else if([acknowledgement isKindOfClass:CPDContribution.class]){
-        detailController = [[CPDContributionDetailViewController alloc] initWithContribution:acknowledgement];
+        CPDContribution *contribution = acknowledgement;
+        if(contribution.websiteAddress){
+            detailController = [[CPDContributionDetailViewController alloc] initWithContribution:contribution];
+        }
     }
 
     [self.navigationController pushViewController:detailController animated:YES];

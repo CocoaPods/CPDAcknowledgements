@@ -10,10 +10,10 @@
 
 @interface CPDContribution : NSObject
 
-- (id)initWithName:(NSString *)name url:(NSString *)url role:(NSString *)role;
+- (id)initWithName:(NSString *)name websiteAddress:(NSString *)address role:(NSString *)role;
 
 @property (nonatomic, copy, readonly) NSString *name;
-@property (nonatomic, copy, readonly) NSString *URL;
+@property (nonatomic, copy, readonly) NSString *websiteAddress;
 @property (nonatomic, copy, readonly) NSString *role;
 
 @property (nonatomic, copy) NSString *avatarAddress;

@@ -13,7 +13,8 @@
 
 - (id)initWithLibrary:(CPDLibrary *)library;
 
-@property (nonatomic, copy) NSString *HTML;
-@property (nonatomic, copy) NSString *CSS;
+@property (readwrite, nonatomic, copy) NSString *HTML;
+@property (readwrite, nonatomic, copy) NSString *CSS;
+@property (readwrite, nonatomic, copy) NSString *headerHTML;
 
 @end

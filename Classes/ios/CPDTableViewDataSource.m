@@ -76,12 +76,12 @@ static const NSString *CPDEntries = @"CPDEntries";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier];
-        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.separatorInset = UIEdgeInsetsZero;
     }
 
     if ([item isKindOfClass:CPDLibrary.class]){
         cell.textLabel.text = [item title];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
     } else if ([item isKindOfClass:CPDContribution.class]){
         [self configureCell:cell withContribution:item];
@@ -94,6 +94,10 @@ static const NSString *CPDEntries = @"CPDEntries";
     cell.textLabel.text = [contribution name];
     cell.detailTextLabel.text = [contribution role];
     cell.detailTextLabel.textColor = [UIColor grayColor];
+
+    BOOL supportsFullViewController = (contribution.websiteAddress != nil);
+    cell.accessoryType = supportsFullViewController ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
+    cell.selectionStyle = supportsFullViewController ? UITableViewCellSelectionStyleGray : UITableViewCellSelectionStyleNone;
 
     if ([contribution avatarAddress]){
         [self setImageAsyncForCell:cell contribution:contribution];
@@ -111,8 +115,8 @@ static const NSString *CPDEntries = @"CPDEntries";
     dispatch_async(queue, ^{
         NSURL *imageURL = [NSURL URLWithString:[contribution avatarAddress]];
         NSData *data = [NSData dataWithContentsOfURL:imageURL];
-        UIImage *image = [UIImage imageWithData:data];
         dispatch_async(dispatch_get_main_queue(), ^{
+            UIImage *image = [UIImage imageWithData:data];
             imageView.image = image;
             [cell setNeedsLayout];
         });
