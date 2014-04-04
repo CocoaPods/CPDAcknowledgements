@@ -9,7 +9,10 @@ To run the example project; clone the repo, and run `pod install` from the Proje
 
 ## Requirements
 
-Not ready for public prime-time yet. Requires CocoaPods 0.30.
+Not ready for public prime-time yet. Requires CocoaPods 0.31+.
+
+DEVS:
+If you don't have the full dev environment set up. You will need to add [this file](http://cl.ly/0G2u1s3Q032K/Pods-Demo%20ProjectTests-metadata.plist) to your project so that this pod has some metadata.
 
 ## Installation
 
