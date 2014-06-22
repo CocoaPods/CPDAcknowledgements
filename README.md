@@ -1,5 +1,7 @@
 # CPDAcknowledgements
 
+**Not ready for public prime-time yet. Requires a future version of CocoaPods.**
+
 [![Version](http://cocoapod-badges.herokuapp.com/v/CPDAcknowledgements/badge.png)](http://cocoadocs.org/docsets/CPDAcknowledgements)
 [![Platform](http://cocoapod-badges.herokuapp.com/p/CPDAcknowledgements/badge.png)](http://cocoadocs.org/docsets/CPDAcknowledgements)
 
@@ -8,8 +10,6 @@
 To run the example project; clone the repo, and run `pod install` from the Project directory first.
 
 ## Requirements
-
-Not ready for public prime-time yet. Requires CocoaPods 0.31+.
 
 DEVS:
 If you don't have the full dev environment set up. You will need to add [this file](http://cl.ly/0G2u1s3Q032K/Pods-Demo%20ProjectTests-metadata.plist) to your project so that this pod has some metadata.
