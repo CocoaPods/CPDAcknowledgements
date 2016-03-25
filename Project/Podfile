@@ -13,3 +13,7 @@ target "Demo ProjectTests" do
   pod 'Expecta',     '~> 0.2'
   pod 'OCMockito',   '~> 1.0'
 end
+
+post_install do |installer|
+    plugin 'cocoapods-acknowledgements'
+end
