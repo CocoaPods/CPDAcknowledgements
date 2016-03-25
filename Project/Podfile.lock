@@ -1,30 +1,19 @@
 PODS:
   - CPDAcknowledgements (0.0.1)
-  - Expecta (0.2.3)
-  - FLKAutoLayout (0.1.1)
+  - Expecta (0.4.2)
+  - FLKAutoLayout (0.2.1)
   - IRFEmojiCheatSheet (0.3.0)
-  - KFData (1.0.0):
-    - KFData/Essentials
-  - KFData/Core (1.0.0)
-  - KFData/Essentials (1.0.0):
-    - KFData/Core
-    - KFData/Store
-    - KFData/UI
-  - KFData/Store (1.0.0)
-  - KFData/UI (1.0.0):
-    - KFData/Essentials
-  - OCHamcrest (3.0.1)
-  - OCMockito (1.1.0):
-    - OCHamcrest (~> 3.0)
-  - ORStackView (0.6.1):
-    - FLKAutoLayout (~> 0.1)
-  - Specta (0.2.1)
+  - OCHamcrest (4.3.0)
+  - OCMockito (1.4.0):
+    - OCHamcrest (~> 4.0)
+  - ORStackView (3.0.1):
+    - FLKAutoLayout (~> 0.2)
+  - Specta (0.5.0)
 
 DEPENDENCIES:
   - CPDAcknowledgements (from `../CPDAcknowledgements.podspec`)
   - Expecta (~> 0.2)
   - IRFEmojiCheatSheet
-  - KFData
   - OCMockito (~> 1.0)
   - ORStackView
   - Specta (~> 0.2)
@@ -34,14 +23,13 @@ EXTERNAL SOURCES:
     :path: ../CPDAcknowledgements.podspec
 
 SPEC CHECKSUMS:
-  CPDAcknowledgements: 88a1d54f672c9cad2719420c2ef616fc05179dae
-  Expecta: dbc4a27fabb853bdd2e907e33f11ee43a9a47d0c
-  FLKAutoLayout: fc04b932009174d4118ef4bda9dc8fedf1369efc
-  IRFEmojiCheatSheet: 88536eccaa3d994a8300063ea4b9cfc245561df5
-  KFData: 3176caf0c9139f55145b80e3799b7b493454010b
-  OCHamcrest: 782c52ae8c673e5d6060a65005cfd26d20d519ba
-  OCMockito: 317fa0cf75c9b0d73d2be335789c556537be7fd2
-  ORStackView: d93040140b2c660ba3376fcb9580db9843a04436
-  Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
+  CPDAcknowledgements: 4036ed018bfe2d226a7e7ad4a23d9757cc9c59cc
+  Expecta: 78b4e8b0c8291fa4524d7f74016b6065c2e391ec
+  FLKAutoLayout: 9db6b30c2008d230da608e62c607b11c23b942e6
+  IRFEmojiCheatSheet: 364b2733c4e37c65ef9f56225246cdf42068370f
+  OCHamcrest: cd63d27f48a266d4412c0b295b01b8f0940efa81
+  OCMockito: 4981140c9a9ec06c31af40f636e3c0f25f27e6b2
+  ORStackView: a1bb52748cd0ae29891c140baf22ff8972fb363c
+  Specta: eb90708ed77569bbda089f8ead10bb99b8e9489e
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.39.0

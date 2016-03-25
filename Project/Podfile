@@ -2,16 +2,14 @@ target "Demo Project" do
 	pod "CPDAcknowledgements", :path => "../CPDAcknowledgements.podspec"
 
 	# These pods are used only for giving us some data
-	
-	pod "KFData"
 	pod "ORStackView"
 	pod "IRFEmojiCheatSheet"
 end
 
 target "Demo ProjectTests" do
-	pod 'Specta',      '~> 0.2'
-  pod 'Expecta',     '~> 0.2'
-  pod 'OCMockito',   '~> 1.0'
+    pod 'Specta',      '~> 0.2'
+    pod 'Expecta',     '~> 0.2'
+    pod 'OCMockito',   '~> 1.0'
 end
 
 post_install do |installer|
