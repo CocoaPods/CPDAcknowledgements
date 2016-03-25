@@ -80,7 +80,6 @@
     webView.dataDetectorTypes = UIDataDetectorTypeNone;
     webView.backgroundColor = [UIColor whiteColor];
     webView.opaque = NO;
-    webView.frame = self.view.bounds;
     webView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 
 
