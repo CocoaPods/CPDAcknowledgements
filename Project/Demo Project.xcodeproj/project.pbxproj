@@ -525,6 +525,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo Project-Prefix.pch";
 				INFOPLIST_FILE = "Demo/Demo Project-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "Demo Project";
 				WRAPPER_EXTENSION = app;
 			};
@@ -539,6 +540,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Demo/Demo Project-Prefix.pch";
 				INFOPLIST_FILE = "Demo/Demo Project-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "Demo Project";
 				WRAPPER_EXTENSION = app;
 			};
