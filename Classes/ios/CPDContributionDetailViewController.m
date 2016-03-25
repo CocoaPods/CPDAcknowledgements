@@ -6,8 +6,9 @@
 
 #import "CPDContributionDetailViewController.h"
 #import "CPDContribution.h"
+@import WebKit;
 
-@interface CPDContributionDetailViewController () <UIWebViewDelegate, UIAlertViewDelegate>
+@interface CPDContributionDetailViewController () <WKNavigationDelegate, UIAlertViewDelegate>
 @property (nonatomic, strong) CPDContribution *contribution;
 @property (nonatomic, strong) NSURL *urlForAlertView;
 @end
@@ -30,10 +31,10 @@
 
 - (void)loadView
 {
-    UIWebView *webView = [[UIWebView alloc] init];
+    WKWebView *webView = [[WKWebView alloc] init];
     self.view = webView;
 
-    webView.delegate = self;
+    webView.navigationDelegate = self;
     if([webView respondsToSelector:@selector(scrollView)])
         webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
 
@@ -52,30 +53,27 @@
 	self.navigationItem.titleView = indicator;
 }
 
-
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
+    
+    if (navigationAction.navigationType == WKNavigationTypeLinkActivated) {
         NSString *title = NSLocalizedString(@"Open in Safari", @"Open in Safari popover title");
         NSString *messageFormat = NSLocalizedString(@"Open '%@' in Safari", @"Open in Safari popover body format");
-        NSString *message = [NSString stringWithFormat:messageFormat, request.URL.absoluteString];
-        self.urlForAlertView = request.URL;
-
+        NSString *message = [NSString stringWithFormat:messageFormat, navigationAction.request.URL.absoluteString];
+        self.urlForAlertView = navigationAction.request.URL;
+        
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Open in Safari", nil];
         [alertView show];
-
-        return NO;
+        
+        decisionHandler(WKNavigationActionPolicyCancel);
     }
-
-    return YES;
+    
+    decisionHandler(WKNavigationActionPolicyAllow);
 }
 
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
 {
 	self.navigationItem.titleView = nil;
 }
-
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {

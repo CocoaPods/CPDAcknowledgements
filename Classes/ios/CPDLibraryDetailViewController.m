@@ -9,10 +9,10 @@
 #import "CPDLibraryDetailViewController.h"
 #import "CPDLibrary.h"
 #import "CPDLibraryHeaderView.h"
+@import WebKit;
 
-
-@interface CPDLibraryDetailViewController () <UIWebViewDelegate, UIActionSheetDelegate>
-@property (nonatomic, strong) UIWebView *view;
+@interface CPDLibraryDetailViewController () <UIActionSheetDelegate>
+@property (nonatomic, strong) WKWebView *view;
 @property (readonly, nonatomic, strong) CPDLibrary *library;
 @end
 
@@ -63,7 +63,7 @@
 }
 
 
-- (void)openLicenseInWebview:(UIWebView *)webView
+- (void)openLicenseInWebview:(WKWebView *)webView
 {
 	NSString *html = self.HTML ?: [self.class defaultHTMLTemplate];
     NSString *headerHTML = self.headerHTML ?: [self.class defaultHeaderTemplate];
@@ -74,10 +74,9 @@
 }
 
 
-- (UIWebView *)createWebview
+- (WKWebView *)createWebview
 {
-    UIWebView *webView = [[UIWebView alloc] init];
-    webView.dataDetectorTypes = UIDataDetectorTypeNone;
+    WKWebView *webView = [[WKWebView alloc] init];
     webView.backgroundColor = [UIColor whiteColor];
     webView.opaque = NO;
     webView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
@@ -109,7 +108,7 @@
 
 + (NSString *)defaultHTMLTemplate
 {
-    return @"<html><head>{{STYLESHEET}}</head><body>{{HEADER}}<p>{{BODY}}</p></body></html>";
+    return @"<html><head>{{STYLESHEET}}<meta name='viewport' content='width=device-width'></head><body>{{HEADER}}<p>{{BODY}}</p></body></html>";
 }
 
 

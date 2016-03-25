@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DD00FB71CA5C52600F717AD /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DD00FB61CA5C52600F717AD /* WebKit.framework */; };
 		342F9EBDA81A787D5ED68844 /* CPDLibraryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 342F94FCBD3B4E6AED697FE4 /* CPDLibraryTests.m */; };
 		600F98FE18896F8C00896B83 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 600F98FD18896F8C00896B83 /* Foundation.framework */; };
 		600F990018896F8C00896B83 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 600F98FF18896F8C00896B83 /* CoreGraphics.framework */; };
