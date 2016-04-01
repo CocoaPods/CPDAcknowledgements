@@ -38,17 +38,33 @@
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (!self) return nil;
 
-    if(!acknowledgements){
-        NSBundle *bundle = [NSBundle mainBundle];
-        acknowledgements = [CPDCocoaPodsLibrariesLoader loadAcknowledgementsWithBundle:bundle];
-    }
-
-    _dataSource = [[CPDTableViewDataSource alloc] initWithAcknowledgements:acknowledgements contributions:contributions];
+    [self configureAcknowledgements:acknowledgements contributions:contributions];
     _style = style;
 
     self.title = @"Acknowledgements";
 
     return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder{
+    self = [super initWithCoder:aDecoder];
+    if (!self) return nil;
+    
+    [self configureAcknowledgements:nil contributions:nil];
+    
+    self.title = @"Acknowledgements";
+    
+    return self;
+}
+
+- (void)configureAcknowledgements:(NSArray *)acknowledgements contributions:(NSArray *)contributions{
+    
+    if(!acknowledgements){
+        NSBundle *bundle = [NSBundle mainBundle];
+        acknowledgements = [CPDCocoaPodsLibrariesLoader loadAcknowledgementsWithBundle:bundle];
+    }
+    
+    _dataSource = [[CPDTableViewDataSource alloc] initWithAcknowledgements:acknowledgements contributions:contributions];
 }
 
 - (void)loadView

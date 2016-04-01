@@ -18,16 +18,16 @@
     self = [super init];
     if (!self) return  nil;
 
-    _title = [dictionary[@"CPDName"] copy];
-    _licenseBody = [dictionary[@"CPDLicenseText"] copy];
-    _licenseType = [dictionary[@"CPDLicenseType"] copy];
+    _title = [dictionary[@"name"] copy];
+    _licenseBody = [dictionary[@"licenseText"] copy];
+    _licenseType = [dictionary[@"licenseType"] copy];
 
-    _socialMediaAddress = [dictionary[@"CPDSocialMediaURL"] copy];
-    _libraryDescription = [dictionary[@"CPDDescription"] copy];
-    _summary = [dictionary[@"CPDSummary"] copy];
-    _version = [dictionary[@"CPDVersion"] copy];
+    _socialMediaAddress = [dictionary[@"socialMediaURL"] copy];
+    _libraryDescription = [dictionary[@"description"] copy];
+    _summary = [dictionary[@"summary"] copy];
+    _version = [dictionary[@"version"] copy];
 
-    _authors = [self authorsWithObject:dictionary[@"CPDAuthors"]];
+    _authors = [self authorsWithObject:dictionary[@"authors"]];
 
     return self;
 }
