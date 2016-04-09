@@ -1,9 +1,3 @@
-//
-// CPDContributionDetailViewController
-// Created by orta on 18/01/2014.
-//
-//  Copyright (c) 2014 http://artsy.net. All rights reserved.
-
 #import "CPDContributionDetailViewController.h"
 #import "CPDContribution.h"
 @import WebKit;

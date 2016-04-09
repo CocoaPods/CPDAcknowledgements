@@ -1,17 +1,9 @@
-//
-//  CPDAcknowledgementsLoader.m
-//  Pods
-//
-//  Created by Orta on 17/01/2014.
-//
-//
-
 #import "CPDCocoaPodsLibrariesLoader.h"
 #import "CPDLibrary.h"
 
 @implementation CPDCocoaPodsLibrariesLoader
 
-+ (NSArray *)loadAcknowledgementsWithBundle:(NSBundle *)bundle;
++ (NSArray <CPDLibrary *>*)loadAcknowledgementsWithBundle:(NSBundle *)bundle;
 {
     NSString *path = [self pathForFirstFileWithSuffix:@"-metadata.plist" inBundle:bundle];
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:path];
@@ -25,6 +17,10 @@
 
     for (NSDictionary *entry in entries) {
         CPDLibrary *acknowledgement = [[CPDLibrary alloc] initWithCocoaPodsMetadataPlistDictionary:entry];
+
+        // Feels a bit weird to be including itself in the list.
+        if (acknowledgement.title == @"CPDAcknowledgements") { continue; }
+
         [acknowledgements addObject:acknowledgement];
     }
     return acknowledgements;

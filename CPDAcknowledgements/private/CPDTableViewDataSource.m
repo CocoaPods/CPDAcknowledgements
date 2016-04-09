@@ -1,11 +1,3 @@
-//
-//  CPDTableViewDataSource.m
-//  Pods
-//
-//  Created by Orta on 17/01/2014.
-//
-//
-
 #import "CPDTableViewDataSource.h"
 #import "CPDLibrary.h"
 #import "CPDContribution.h"
@@ -90,7 +82,8 @@ static const NSString *CPDEntries = @"CPDEntries";
     return cell;
 }
 
-- (void)configureCell:(UITableViewCell *)cell withContribution:(CPDContribution *)contribution {
+- (void)configureCell:(UITableViewCell *)cell withContribution:(CPDContribution *)contribution
+{
     cell.textLabel.text = [contribution name];
     cell.detailTextLabel.text = [contribution role];
     cell.detailTextLabel.textColor = [UIColor grayColor];
@@ -111,7 +104,7 @@ static const NSString *CPDEntries = @"CPDEntries";
     imageView.layer.masksToBounds = YES;
     imageView.transform = CGAffineTransformMakeScale(0.45, 0.45);
 
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0ul);
     dispatch_async(queue, ^{
         NSURL *imageURL = [NSURL URLWithString:[contribution avatarAddress]];
         NSData *data = [NSData dataWithContentsOfURL:imageURL];
@@ -123,7 +116,8 @@ static const NSString *CPDEntries = @"CPDEntries";
     });
 }
 
-- (CPDLibrary *)acknowledgementAtIndexPath:(NSIndexPath *)indexPath {
+- (CPDLibrary *)acknowledgementAtIndexPath:(NSIndexPath *)indexPath
+{
     NSDictionary *section = self.sections[(NSUInteger) indexPath.section];
     return section[CPDEntries][(NSUInteger) indexPath.row];
 }

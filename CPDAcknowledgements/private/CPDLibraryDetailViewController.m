@@ -1,14 +1,6 @@
-//
-//  CPDLibraryDetailViewController
-//  Pods
-//
-//  Created by Orta on 17/01/2014.
-//
-//
-
 #import "CPDLibraryDetailViewController.h"
 #import "CPDLibrary.h"
-#import "CPDLibraryHeaderView.h"
+
 @import WebKit;
 
 @interface CPDLibraryDetailViewController () <UIActionSheetDelegate>
@@ -31,8 +23,12 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareTapped:)];
-    self.navigationItem.rightBarButtonItem = shareButton;
+    [super viewWillAppear:animated];
+
+    if (self.library.hasActions) {
+        UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(shareTapped:)];
+        self.navigationItem.rightBarButtonItem = shareButton;
+    }
 }
 
 - (void)shareTapped:(UIBarButtonItem *)sender
@@ -62,7 +58,6 @@
 	[self openLicenseInWebview:self.view];
 }
 
-
 - (void)openLicenseInWebview:(WKWebView *)webView
 {
 	NSString *html = self.HTML ?: [self.class defaultHTMLTemplate];
@@ -72,7 +67,6 @@
 
 	[webView loadHTMLString:renderedHTML baseURL:nil];
 }
-
 
 - (WKWebView *)createWebview
 {
@@ -88,10 +82,11 @@
     return webView;
 }
 
-
 + (NSString *)generatedHTMLWithHTML:(NSString *)html headerHTML:(NSString *)headerHTML CSS:(NSString *)css acknowledgement:(CPDLibrary *)acknowledgement
 {
     NSMutableString *mutableHTML = [html mutableCopy];
+
+    NSString *summary = acknowledgement.libraryDescription.length > 0 ? acknowledgement.libraryDescription : acknowledgement.summary;
 
     [mutableHTML replaceOccurrencesOfString:@"{{STYLESHEET}}" withString:css options:0 range:NSMakeRange(0, mutableHTML.length)];
     NSString *htmlLicense = [acknowledgement.licenseBody stringByReplacingOccurrencesOfString:@"\n\n" withString:@"</p><p>"];
@@ -99,7 +94,7 @@
     [mutableHTML replaceOccurrencesOfString:@"{{BODY}}" withString:htmlLicense options:0 range:NSMakeRange(0, mutableHTML.length)];
     [mutableHTML replaceOccurrencesOfString:@"{{HEADER}}" withString:headerHTML options:0 range:NSMakeRange(0, mutableHTML.length)];
 
-    [mutableHTML replaceOccurrencesOfString:@"{{SUMMARY}}" withString:acknowledgement.summary options:0 range:NSMakeRange(0, mutableHTML.length)];
+    [mutableHTML replaceOccurrencesOfString:@"{{SUMMARY}}" withString:summary options:0 range:NSMakeRange(0, mutableHTML.length)];
     [mutableHTML replaceOccurrencesOfString:@"{{VERSION}}" withString:acknowledgement.version options:0 range:NSMakeRange(0, mutableHTML.length)];
     [mutableHTML replaceOccurrencesOfString:@"{{SHORT_LICENSE}}" withString:acknowledgement.licenseType options:0 range:NSMakeRange(0, mutableHTML.length)];
 

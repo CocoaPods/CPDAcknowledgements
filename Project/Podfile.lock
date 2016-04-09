@@ -1,6 +1,6 @@
 PODS:
-  - CPDAcknowledgements (0.0.1)
-  - Expecta (0.4.2)
+  - CPDAcknowledgements (0.5.0)
+  - Expecta (1.0.5)
   - FLKAutoLayout (0.2.1)
   - IRFEmojiCheatSheet (0.3.0)
   - OCHamcrest (4.3.0)
@@ -8,28 +8,30 @@ PODS:
     - OCHamcrest (~> 4.0)
   - ORStackView (3.0.1):
     - FLKAutoLayout (~> 0.2)
-  - Specta (0.5.0)
+  - Specta (1.0.5)
 
 DEPENDENCIES:
   - CPDAcknowledgements (from `../CPDAcknowledgements.podspec`)
-  - Expecta (~> 0.2)
+  - Expecta (~> 1.0)
   - IRFEmojiCheatSheet
   - OCMockito (~> 1.0)
   - ORStackView
-  - Specta (~> 0.2)
+  - Specta (~> 1.0)
 
 EXTERNAL SOURCES:
   CPDAcknowledgements:
-    :path: ../CPDAcknowledgements.podspec
+    :path: "../CPDAcknowledgements.podspec"
 
 SPEC CHECKSUMS:
-  CPDAcknowledgements: 4036ed018bfe2d226a7e7ad4a23d9757cc9c59cc
-  Expecta: 78b4e8b0c8291fa4524d7f74016b6065c2e391ec
+  CPDAcknowledgements: 32f6dfcc35eed5d9897f13947024b9d32133e2fa
+  Expecta: e1c022fcd33910b6be89c291d2775b3fe27a89fe
   FLKAutoLayout: 9db6b30c2008d230da608e62c607b11c23b942e6
   IRFEmojiCheatSheet: 364b2733c4e37c65ef9f56225246cdf42068370f
   OCHamcrest: cd63d27f48a266d4412c0b295b01b8f0940efa81
   OCMockito: 4981140c9a9ec06c31af40f636e3c0f25f27e6b2
   ORStackView: a1bb52748cd0ae29891c140baf22ff8972fb363c
-  Specta: eb90708ed77569bbda089f8ead10bb99b8e9489e
+  Specta: ac94d110b865115fe60ff2c6d7281053c6f8e8a2
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 1c110034e6fc846de3ca560c07d3c7cb43780d13
+
+COCOAPODS: 1.0.0.beta.6
