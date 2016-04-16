@@ -1,11 +1,3 @@
-//
-//  CPDContribution.m
-//  Pods
-//
-//  Created by Orta on 17/01/2014.
-//
-//
-
 #import "CPDContribution.h"
 
 @implementation CPDContribution

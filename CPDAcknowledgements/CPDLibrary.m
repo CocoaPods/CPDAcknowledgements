@@ -1,19 +1,10 @@
-//
-//  CPDAcknowledgement.m
-//  Pods
-//
-//  Created by Orta on 17/01/2014.
-//
-//
-
-#import <CPDAcknowledgements/CPDContribution.h>
+#import "CPDContribution.h"
 #import "CPDLibrary.h"
 #import "CPDExternalActionHandler.h"
 
-
 @implementation CPDLibrary
 
-- (id)initWithCocoaPodsMetadataPlistDictionary:(NSDictionary *)dictionary
+- (instancetype)initWithCocoaPodsMetadataPlistDictionary:(NSDictionary *)dictionary
 {
     self = [super init];
     if (!self) return  nil;
@@ -38,8 +29,7 @@
         NSMutableArray *authors = [NSMutableArray array];
 
         [object enumerateKeysAndObjectsUsingBlock:^(NSString *name, NSString* email, BOOL *stop) {
-            NSString *mailToLink = [NSString stringWithFormat:@"mailto:%@", email];
-            CPDContribution *contribution = [[CPDContribution alloc] initWithName:name websiteAddress:mailToLink role:nil];
+            CPDContribution *contribution = [[CPDContribution alloc] initWithName:name websiteAddress:nil role:nil];
             [authors addObject:contribution];
         }];
 
@@ -61,11 +51,14 @@
     return nil;
 }
 
+- (BOOL)hasActions
+{
+    return self.websiteAddress.length > 0 || [self.socialMediaAddress hasPrefix:@"https://twitter"];
+}
+
 - (NSDictionary *)actionsWithSelectors
 {
     return @{
-        NSLocalizedString(@"Email Author", @"Email Authors alert text"): NSStringFromSelector(@selector(emailAuthors)),
-        NSLocalizedString(@"Email Authors", @"Email Authors alert text"): NSStringFromSelector(@selector(emailAuthors)),
         NSLocalizedString(@"Open Website", @"Open Website alert text"): NSStringFromSelector(@selector(openLibraryWebsite)),
         [NSString stringWithFormat:@"@%@", self.twitterHandle]: NSStringFromSelector(@selector(openTwitterPage)),
     };
@@ -74,14 +67,6 @@
 - (NSArray *)actionTitlesForLibrary
 {
     NSMutableArray *actionTitles = [NSMutableArray array];
-    if (self.authors.count > 0){
-        if (self.authors.count == 1){
-            [actionTitles addObject:NSLocalizedString(@"Email Author", @"Email Authors alert text")];
-        }  else {
-            [actionTitles addObject:NSLocalizedString(@"Email Authors", @"Email Single Author alert text")];
-        }
-    }
-
     if (self.websiteAddress.length > 0){
         [actionTitles addObject:NSLocalizedString(@"Open Website", @"Open Website alert text")];
     }
@@ -95,6 +80,8 @@
 
 - (void)performActionAtIndex:(NSInteger)index
 {
+    if (self.websiteAddress.length > 0) { index--; }
+
     NSString *title = self.actionTitlesForLibrary[index];
     NSString *selectorString = self.actionsWithSelectors[title];
     SEL action = NSSelectorFromString(selectorString);
@@ -104,11 +91,6 @@
     [self performSelector:action];
 #pragma clang diagnostic pop
 }
-- (void)emailAuthors
-{
-	// Generate emails
-	//[CPDExternalActionHandler openEmailSheetForAuthors:<#(NSArray *)authors#> ofLibrary:<#(CPDLibrary *)library#>];
-}
 
 - (void)openTwitterPage
 {
@@ -117,7 +99,7 @@
 
 - (void)openLibraryWebsite
 {
-
+    [CPDExternalActionHandler openAddressInBrowser:self.websiteAddress];
 }
 
 @end

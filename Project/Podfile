@@ -1,17 +1,17 @@
+plugin 'cocoapods-acknowledgements'
+
 target "Demo Project" do
 	pod "CPDAcknowledgements", :path => "../CPDAcknowledgements.podspec"
 
 	# These pods are used only for giving us some data
 	pod "ORStackView"
 	pod "IRFEmojiCheatSheet"
-end
 
-target "Demo ProjectTests" do
-    pod 'Specta',      '~> 0.2'
-    pod 'Expecta',     '~> 0.2'
+	target "Demo ProjectTests" do
+    inherit! :search_paths
+
+    pod 'Specta',      '~> 1.0'
+    pod 'Expecta',     '~> 1.0'
     pod 'OCMockito',   '~> 1.0'
-end
-
-post_install do |installer|
-    plugin 'cocoapods-acknowledgements'
+  end
 end

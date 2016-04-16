@@ -1,9 +1,3 @@
-//
-// CPDExternalActionHandler
-// Created by orta on 21/01/2014.
-//
-//  Copyright (c) 2014 http://artsy.net. All rights reserved.
-
 #import "CPDExternalActionHandler.h"
 #import "CPDLibrary.h"
 
@@ -33,16 +27,6 @@
 
 	NSString *url = [NSString stringWithFormat:@"https://twitter.com/%@", twitterUsername];
 	[application openURL:[NSURL URLWithString:url]];
-}
-
-+ (void)openEmailSheetForAuthors:(NSArray *)authors ofLibrary:(CPDLibrary *)library
-{
-//	MFMailComposeViewController *controller = [[MFMailComposeViewController alloc] init];
-//	[controller setToRecipients:toRecipients];
-//	[controller setSubject:subject];
-//	[controller setMessageBody:body isHTML:YES];
-//	controller.mailComposeDelegate = self;
-//	[self presentViewController:controller animated:YES completion:^{}];
 }
 
 + (void)openAddressInBrowser:(NSString *)address
