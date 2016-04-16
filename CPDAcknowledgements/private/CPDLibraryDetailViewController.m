@@ -10,6 +10,8 @@
 
 @implementation CPDLibraryDetailViewController
 
+@dynamic view;
+
 - (id)initWithLibrary:(CPDLibrary *)library
 {
     self = [super init];

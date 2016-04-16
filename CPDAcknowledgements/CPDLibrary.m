@@ -29,7 +29,7 @@
         NSMutableArray *authors = [NSMutableArray array];
 
         [object enumerateKeysAndObjectsUsingBlock:^(NSString *name, NSString* email, BOOL *stop) {
-            CPDContribution *contribution = [[CPDContribution alloc] initWithName:name websiteAddress:nil role:nil];
+            CPDContribution *contribution = [[CPDContribution alloc] initWithName:name websiteAddress:nil role:@""];
             [authors addObject:contribution];
         }];
 
@@ -37,7 +37,7 @@
     }
 
     if ([object isKindOfClass:NSString.class]){
-        return @[[[CPDContribution alloc] initWithName:object websiteAddress:nil role:nil] ];
+        return @[[[CPDContribution alloc] initWithName:object websiteAddress:nil role:@""] ];
     }
 
     return nil;

@@ -19,7 +19,7 @@
         CPDLibrary *acknowledgement = [[CPDLibrary alloc] initWithCocoaPodsMetadataPlistDictionary:entry];
 
         // Feels a bit weird to be including itself in the list.
-        if (acknowledgement.title == @"CPDAcknowledgements") { continue; }
+        if ([acknowledgement.title isEqualToString: @"CPDAcknowledgements"]) { continue; }
 
         [acknowledgements addObject:acknowledgement];
     }
