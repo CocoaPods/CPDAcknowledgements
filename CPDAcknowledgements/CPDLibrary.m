@@ -53,7 +53,7 @@
 
 - (BOOL)hasActions
 {
-    return (self.websiteAddress.length > 0 || [self.socialMediaAddress hasPrefix:@"https://twitter"]);
+    return self.websiteAddress.length > 0 || [self.socialMediaAddress hasPrefix:@"https://twitter"];
 }
 
 - (NSDictionary *)actionsWithSelectors

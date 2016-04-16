@@ -68,10 +68,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    NSAssert(self.navigationController, @"The AcknowledgementVC needs to be inside a navigation controller.");
 
-    if(!self.navigationController){
-        @throw @"The AcknowledgementVC needs to be inside a navigation controller.";
-    }
 }
 
 #pragma mark UITableViewDelegate methods
