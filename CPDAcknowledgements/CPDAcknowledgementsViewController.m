@@ -88,7 +88,22 @@
     } else if([acknowledgement isKindOfClass:CPDContribution.class]){
         CPDContribution *contribution = acknowledgement;
         if (contribution.websiteAddress){
-            detailController = [[CPDContributionDetailViewController alloc] initWithContribution:contribution];
+            if (@available(iOS 9.0, *)) {
+                if ([SFSafariViewController class] != nil) {
+                    // Open in SFSafariViewController
+                    SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:[NSURL URLWithString:contribution.websiteAddress]];
+
+                    UIViewController *rootVc = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+                    while ([rootVc presentedViewController])
+                        rootVc = [rootVc presentedViewController];
+                    [rootVc presentViewController:safariViewController
+                                     animated:YES
+                                   completion:nil];
+                }
+            } else {
+                // Fallback on earlier versions
+                detailController = [[CPDContributionDetailViewController alloc] initWithContribution:contribution];
+            }
         }
     }
 
