@@ -59,6 +59,7 @@
         [alertView show];
         
         decisionHandler(WKNavigationActionPolicyCancel);
+        return;
     }
     
     decisionHandler(WKNavigationActionPolicyAllow);
